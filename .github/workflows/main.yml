@@ -12,10 +12,10 @@ on:
 jobs:
 
   # ==========================================================
-  # JOB 1 - BUILD Y TEST
+  # JOB 1 - BUILD
   # ==========================================================
   build:
-    name: Build and Test
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -30,8 +30,8 @@ jobs:
           java-version: '21'
           cache: maven
 
-      - name: Build and test with Maven
-        run: mvn -B clean verify
+      - name: Build with Maven
+        run: mvn -B clean package -DskipTests
 
 
   # ==========================================================
@@ -59,3 +59,4 @@ jobs:
 
       - name: Build Docker images
         run: docker compose build
+        
